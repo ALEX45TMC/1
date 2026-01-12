@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>DataHub - Advanced Security Vault</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "navy": {
+                            "950": "#040712",
+                            "900": "#0a1128",
+                            "800": "#0e1a3d",
+                            "700": "#162a5c",
+                        },
+                        "silver": {
+                            "100": "#f8fafc",
+                            "200": "#e2e8f0",
+                            "300": "#cbd5e1",
+                            "400": "#94a3b8",
+                        },
+                        "cyan": {
+                            "400": "#22d3ee",
+                            "500": "#06b6d4",
+                            "600": "#0891b2",
+                        },
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#04070d",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            .material-symbols-outlined {
+                font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+                font-size: 24px;
+            }
+            .icon-fill {
+                font-variation-settings: 'FILL' 1;
+            }
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .vault-gradient {
+            background: radial-gradient(circle at top left, #162a5c 0%, #0a1128 100%);
+        }
+        .vault-glass {
+            background: rgba(10, 17, 40, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(34, 211, 238, 0.15);
+        }
+        .cyan-glow {
+            box-shadow: 0 0 40px rgba(34, 211, 238, 0.08);
+        }
+        .security-scan-pulse {
+            animation: pulse-ring 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(34, 211, 238, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0); }
+        }
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #22d3ee, transparent);
+            position: absolute;
+            animation: scanning 4s linear infinite;
+            z-index: 10;
+        }
+        @keyframes scanning {
+            0% { top: 0; opacity: 0; }
+            5% { opacity: 1; }
+            95% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  }
+}
+</script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased overflow-hidden">
+    <div id="root"></div>
+</body>
+</html>
