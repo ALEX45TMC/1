@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producto Premium - Transforma Tu Vida Hoy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #10b981;
+            --dark: #1f2937;
+            --light: #f3f4f6;
+            --white: #ffffff;
+            --accent: #f59e0b;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            padding: 18px 45px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            animation: fadeInUp 1s ease 0.4s both, pulse 2s infinite 1s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.6);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: var(--dark);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 40px;
+            background: var(--light);
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 80px 0;
+            background: var(--light);
+        }
+
+        .benefits-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: var(--white);
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .checkmark {
+            font-size: 2rem;
+            color: var(--secondary);
+            min-width: 40px;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border: 2px solid var(--light);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary);
+            box-shadow: 0 10px 40px rgba(37, 99, 235, 0.2);
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: var(--white);
+            padding: 8px 25px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .price {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 20px 0;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: #6b7280;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--light);
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--white);
+        }
+
+        .testimonials .section-title {
+            color: var(--white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        /* Guarantee Section */
+        .guarantee {
+            padding: 60px 0;
+            background: var(--light);
+            text-align: center;
+        }
+
+        .guarantee-badge {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .guarantee h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .guarantee p {
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .faq-item {
+            max-width: 800px;
+            margin: 0 auto 20px;
+            background: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 25px 25px;
+            max-height: 500px;
+        }
+
+        /* CTA Final Section */
+        .final-cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .final-cta p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            }
+            50% {
+                box-shadow: 0 4px 25px rgba(245, 158, 11, 0.7);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .pricing-card.featured:hover {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Urgency Banner */
+        .urgency-banner {
+            background: var(--accent);
+            color: var(--white);
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        /* Countdown Timer */
+        .countdown {
+            display: inline-flex;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .countdown-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <!-- Urgency Banner -->
+    <div class="urgency-banner">
+        🔥 ¡Oferta Especial! 50% de Descuento - Termina en:
+        <div class="countdown" id="countdown">
+            <div class="countdown-item">
+                <span class="countdown-number" id="hours">00</span>
+                <span class="countdown-label">Horas</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="minutes">00</span>
+                <span class="countdown-label">Min</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="seconds">00</span>
+                <span class="countdown-label">Seg</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">🚀 ProductoPro</div>
+                <ul class="nav-links">
+                    <li><a href="#features">Características</a></li>
+                    <li><a href="#benefits">Beneficios</a></li>
+                    <li><a href="#pricing">Precios</a></li>
+                    <li><a href="#testimonials">Testimonios</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Transforma Tu Vida Con Nuestro Producto Premium</h1>
+            <p>Descubre la solución que ha ayudado a más de 10,000 personas a alcanzar sus objetivos. Resultados garantizados o te devolvemos tu dinero.</p>
+            <a href="#pricing" class="cta-button">¡Quiero Empezar Ahora!</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Características Principales</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Rápido y Eficiente</h3>
+                    <p>Obtén resultados en tiempo récord gracias a nuestra tecnología de última generación optimizada para máxima eficiencia.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>100% Seguro</h3>
+                    <p>Tu seguridad es nuestra prioridad. Contamos con certificaciones internacionales y encriptación de grado militar.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Multi-Plataforma</h3>
+                    <p>Accede desde cualquier dispositivo: computadora, tablet o móvil. Sincronización en tiempo real.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Personalizable</h3>
+                    <p>Adapta el producto a tus necesidades específicas con nuestras opciones de personalización avanzadas.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Analíticas Detalladas</h3>
+                    <p>Dashboard completo con métricas en tiempo real para tomar decisiones informadas y optimizar resultados.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Soporte 24/7</h3>
+                    <p>Nuestro equipo de expertos está disponible las 24 horas para ayudarte en lo que necesites.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits" id="benefits">
+        <div class="container">
+            <h2 class="section-title">Beneficios Que Obtendrás</h2>
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <div class="checkmark">✓</div>
+                    <div>Ahorra hasta 20 horas semanales automatizando tareas repetitivas</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="checkmark">✓</div>
+                    <div>Incrementa tu productividad en un 300% desde el primer mes</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="checkmark">✓</div>
+                    <div>Reduce costos operativos hasta en un 50%</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="checkmark">✓</div>
+                    <div>Acceso prioritario a nuevas funcionalidades y actualizaciones</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="checkmark">✓</div>
+                    <div>Comunidad exclusiva de usuarios premium para networking</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="checkmark">✓</div>
+                    <div>Certificado de completitud para mejorar tu perfil profesional</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Elige Tu Plan Perfecto</h2>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Básico</h3>
+                    <div class="price">$29<span>/mes</span></div>
+                    <ul class="pricing-features">
+                        <li>✓ Acceso a todas las características básicas</li>
+                        <li>✓ Soporte por email</li>
+                        <li>✓ 5 proyectos simultáneos</li>
+                        <li>✓ 1GB de almacenamiento</li>
+                        <li>✗ Sin analíticas avanzadas</li>
+                        <li>✗ Sin API access</li>
+                    </ul>
+                    <a href="#" class="cta-button" style="padding: 12px 30px; font-size: 1rem;">Elegir Básico</a>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="badge">MÁS POPULAR</div>
+                    <h3>Profesional</h3>
+                    <div class="price">$79<span>/mes</span></div>
+                    <ul class="pricing-features">
+                        <li>✓ Todo lo del plan Básico</li>
+                        <li>✓ Soporte prioritario 24/7</li>
+                        <li>✓ Proyectos ilimitados</li>
+                        <li>✓ 50GB de almacenamiento</li>
+                        <li>✓ Analíticas avanzadas</li>
+                        <li>✓ API access completo</li>
+                    </ul>
+                    <a href="#" class="cta-button" style="padding: 12px 30px; font-size: 1rem;">Elegir Profesional</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Empresarial</h3>
+                    <div class="price">$199<span>/mes</span></div>
+                    <ul class="pricing-features">
+                        <li>✓ Todo lo del plan Profesional</li>
+                        <li>✓ Gestor de cuenta dedicado</li>
+                        <li>✓ Usuarios ilimitados</li>
+                        <li>✓ Almacenamiento ilimitado</li>
+                        <li>✓ Integraciones personalizadas</li>
+                        <li>✓ SLA garantizado 99.9%</li>
+                    </ul>
+                    <a href="#" class="cta-button" style="padding: 12px 30px; font-size: 1rem;">Elegir Empresarial</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Lo Que Dicen Nuestros Clientes</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Este producto cambió completamente la forma en que trabajo. He triplicado mi productividad y ahora tengo más tiempo para lo que realmente importa."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">👨‍💼</div>
+                        <div>
+                            <strong>Carlos Mendoza</strong><br>
+                            <small>CEO, TechStart</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"La mejor inversión que he hecho este año. El soporte es excepcional y las actualizaciones constantes mantienen el producto siempre a la vanguardia."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">👩‍💻</div>
+                        <div>
+                            <strong>Ana García</strong><br>
+                            <small>Directora de Marketing, InnovaCorp</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Después de probar múltiples soluciones, finalmente encontré la indicada. La relación calidad-precio es insuperable. ¡Totalmente recomendado!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">👨‍🔧</div>
+                        <div>
+                            <strong>Miguel Rodríguez</strong><br>
+                            <small>Freelancer, Diseño Web</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee Section -->
+    <section class="guarantee">
+        <div class="container">
+            <div class="guarantee-badge">🛡️</div>
+            <h2>Garantía de 30 Días</h2>
+            <p>Estamos tan seguros de la calidad de nuestro producto que ofrecemos una garantía de devolución de dinero de 30 días. Si no estás 100% satisfecho, te devolvemos cada centavo. Sin preguntas.</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-title">Preguntas Frecuentes</h2>
+            <div class="faq-item">
+                <div class="faq-question">¿Cómo puedo empezar? <span>+</span></div>
+                <div class="faq-answer">
+                    <p>Es muy simple. Solo necesitas hacer clic en "Elegir Plan", completar el formulario de registro y tendrás acceso inmediato a todas las funcionalidades. No se requiere tarjeta de crédito para la prueba gratuita.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">¿Puedo cambiar de plan más tarde? <span>+</span></div>
+                <div class="faq-answer">
+                    <p>¡Por supuesto! Puedes actualizar o downgrade tu plan en cualquier momento desde tu panel de control. Los cambios se aplicarán inmediatamente y el ajuste de precio será proporcional.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">¿Qué métodos de pago aceptan? <span>+</span></div>
+                <div class="faq-answer">
+                    <p>Aceptamos todas las principales tarjetas de crédito (Visa, MasterCard, American Express), PayPal, transferencia bancaria y criptomonedas (Bitcoin, Ethereum).</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">¿Hay algún costo oculto? <span>+</span></div>
+                <div class="faq-answer">
+                    <p>No, absolutamente ninguno. El precio que ves es el precio que pagas. No hay cargos de configuración, no hay tarifas ocultas, no hay sorpresas.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">¿Cómo funciona la garantía de devolución? <span>+</span></div>
+                <div class="faq-answer">
+                    <p>Si dentro de los primeros 30 días no estás satisfecho, simplemente contacta a nuestro soporte y procesaremos tu reembolso completo en menos de 24 horas. Sin preguntas incómodas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>¿Listo Para Dar El Siguiente Paso?</h2>
+            <p>Únete a miles de clientes satisfechos y transforma tu manera de trabajar hoy mismo.</p>
+            <a href="#pricing" class="cta-button">¡Comenzar Ahora Mismo!</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <ul class="footer-links">
+                <li><a href="#">Términos y Condiciones</a></li>
+                <li><a href="#">Política de Privacidad</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Soporte</a></li>
+            </ul>
+            <p>&copy; 2024 ProductoPro. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+                const span = question.querySelector('span');
+                span.textContent = faqItem.classList.contains('active') ? '-' : '+';
+            });
+        });
+
+        // Countdown Timer
+        function updateCountdown() {
+            const now = new Date();
+            const tomorrow = new Date(now);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            tomorrow.setHours(0, 0, 0, 0);
+            
+            const diff = tomorrow - now;
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate on Scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .benefit-item, .pricing-card, .testimonial-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
